@@ -1,0 +1,242 @@
+[
+  {
+    "_id": "0",
+    "new": false,
+    "children": [],
+    "name": "Men",
+    "link": "fashion-men",
+    "slug": "fashion-men"
+  },
+  {
+    "_id": "1",
+    "new": false,
+    "children": [
+      {
+        "_id": "1_0",
+        "new": false,
+        "children": [
+          {
+            "_id": "1_0_1",
+            "new": false,
+            "children": [],
+            "name": "T Shirts",
+            "link": "women-t-shirts",
+            "slug": "women-t-shirts"
+          },
+          {
+            "_id": "1_0_2",
+            "new": false,
+            "children": [],
+            "name": "Jeans",
+            "link": "women-jeans",
+            "slug": "women-jeans"
+          },
+          {
+            "_id": "1_0_3",
+            "new": false,
+            "children": [],
+            "name": "Dresses",
+            "link": "women-dresses",
+            "slug": "women-dresses"
+          }
+        ],
+        "name": "Clothing",
+        "link": "women-clothing",
+        "slug": "women-clothing"
+      },{
+        "_id": "1_1",
+        "new": false,
+        "children": [
+          {
+            "_id": "1_1_1",
+            "new": false,
+            "children": [],
+            "name": "Fashion Jewellery",
+            "link": "women-jewellery",
+            "slug": "women-jewellery"
+          },
+          {
+            "_id": "1_1_2",
+            "new": false,
+            "children": [],
+            "name": "Fine Jewellery",
+            "link": "women-jewellery",
+            "slug": "women-jewellery"
+          },
+          {
+            "_id": "1_1_3",
+            "new": false,
+            "children": [],
+            "name": "Earings",
+            "link": "women-jewellery",
+            "slug": "women-jewellery"
+          }
+        ],
+        "name": "Jewellery",
+        "link": "women-jewellery",
+        "slug": "women-jewellery"
+      },
+      {
+        "_id": "1_2",
+        "new": false,
+        "children": [],
+        "name": "Watches & wearables",
+        "link": "women-jewellery",
+        "slug": "women-jewellery"
+      }
+    ],
+    "name": "Women",
+    "link": "fashion-women",
+    "slug": "fashion-women"
+  },
+  {
+    "_id": "2",
+    "new": false,
+    "children": [
+      {
+        "_id": "2_1",
+        "new": false,
+        "children": [
+          {
+            "_id": "2_1_1",
+            "new": false,
+            "children": [],
+            "name": "T-Shirts",
+            "link": "kids-boy-t-shirts",
+            "slug": "kids-boy-t-shirts"
+          },
+          {
+            "_id": "2_1_2",
+            "new": false,
+            "children": [],
+            "name": "Shorts",
+            "link": "kids-boy-shorts",
+            "slug": "kids-boy-shorts"
+          },
+          {
+            "_id": "2_1_3",
+            "new": false,
+            "children": [],
+            "name": "Party Wear",
+            "link": "kids-boy-party-wear",
+            "slug": "kids-boy-party-wear"
+          }
+        ],
+        "name": "Boys Clothing",
+        "link": "kids-boy-fashion",
+        "slug": "kids-boy-fashion"
+      },
+      {
+        "_id": "2_2",
+        "new": false,
+        "children": [
+          {
+            "_id": "2_1_1",
+            "new": false,
+            "children": [],
+            "name": "T-Shirts",
+            "link": "kids-girl-t-shirt",
+            "slug": "kids-girl-t-shirt"
+          },
+          {
+            "_id": "2_1_2",
+            "new": false,
+            "children": [],
+            "name": "Shirts",
+            "link": "kids-girl-shirt",
+            "slug": "kids-girl-shirt"
+          },
+          {
+            "_id": "2_1_3",
+            "new": false,
+            "children": [],
+            "name": "Ethnic Wear",
+            "link": "kids-girl-ethnic",
+            "slug": "kids-girl-ethnic"
+          }
+        ],
+        "name": "Girls Clothing",
+        "link": "kids-girl-fashion",
+        "slug": "kids-girl-fashion"
+      },
+      {
+        "_id": "2_3",
+        "new": false,
+        "children": [],
+        "name": "Footwear",
+        "link": "kids-footwear",
+        "slug": "kids-footwear"
+      }
+    ],
+    "name": "Kids",
+    "link": "kids-fashion",
+    "slug": "kids-fashion"
+  },
+  {
+    "_id": "4",
+    "new": false,
+    "children": [
+      {
+        "_id": "4_1",
+        "new": false,
+        "children": [
+          {
+            "_id": "4_1_1",
+            "new": false,
+            "children": [],
+            "name": "Lipsticks",
+            "link": "women-makeup-lipsticks",
+            "slug": "women-makeup-lipsticks"
+          },
+          {
+            "_id": "4_1_2",
+            "new": false,
+            "children": [],
+            "name": "Mascara",
+            "link": "women-makeup-mascara",
+            "slug": "women-makeup-mascara"
+          },
+          {
+            "_id": "4_1_3",
+            "new": false,
+            "children": [],
+            "name": "Nail Polish",
+            "link": "women-nail-polish",
+            "slug": "women-nail-polish"
+          }
+        ],
+        "name": "Makeup",
+        "link": "women-makeup",
+        "slug": "women-makeup"
+      },
+      {
+        "_id": "4_2",
+        "new": false,
+        "children": [
+          {
+            "_id": "4_1_1",
+            "new": false,
+            "children": [],
+            "name": "Perfumes",
+            "link": "women-perfumes",
+            "slug": "women-perfumes"
+          }
+        ],
+        "name": "Fragrances",
+        "link": "women-fragrances",
+        "slug": "women-fragrances"
+      },
+      {
+        "_id": "4_3",
+        "new": false,
+        "children": [],
+        "name": "Footwear",
+        "link": "women-footwear",
+        "slug": "women-footwear"
+      }
+    ],
+    "name": "Beauty",
+    "link": "fashion-beauty",
+    "slug": "fashion-beauty"
+  }
+]

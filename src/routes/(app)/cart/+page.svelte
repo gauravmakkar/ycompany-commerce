@@ -1,0 +1,458 @@
+<script lang="ts">
+import { applyAction, enhance } from '$app/forms'
+import { CartService, ProductService, WishlistService } from '$lib/services'
+import { toast } from '$lib/utils'
+import { fly, slide } from 'svelte/transition'
+import { goto, invalidateAll } from '$app/navigation'
+import { onMount } from 'svelte'
+import { page } from '$app/stores'
+import { ProductCard, Pricesummary, LazyImg } from '$lib/components'
+import { Skeleton, PrimaryButton } from '$lib/ui'
+import Cookie from 'cookie-universal'
+import dotsLoading from '$lib/assets/dots-loading.gif'
+import noAddToCartAnimate from '$lib/assets/no/add-to-cart-animate.svg'
+import productNonVeg from '$lib/assets/product/non-veg.png'
+import productVeg from '$lib/assets/product/veg.png'
+
+const cookies = Cookie()
+
+export let data
+
+let seoProps = {
+	title: `Cart`,
+	description: `Cart`
+}
+
+let loading = []
+let loadingProducts = false
+let products = []
+let selectedLoadingType = null
+
+onMount(() => {
+	getProducts()
+})
+
+const addToCart = async ({ pid, qty, customizedImg, ix, loadingType }: any) => {
+	if (loadingType) {
+		selectedLoadingType = loadingType
+	}
+	loading[ix] = true
+	await CartService.addToCartService({
+		pid: pid,
+		vid: pid,
+		qty: qty,
+		customizedImg: customizedImg || null,
+		storeId: $page.data.store?.id,
+		origin: $page.data.origin,
+		cookies
+	})
+	await invalidateAll() // Has to be invalidateAll everywhere because cart is called on hooks.server.ts and any invalidation will trigger hooks.server.ts call
+	// Keep await here, else the loader will stop before updating the locals value
+	loading[ix] = false
+	selectedLoadingType = null
+}
+
+async function getProducts() {
+	try {
+		loadingProducts = true
+
+		const resP = await ProductService.fetchProducts({
+			origin: $page?.data?.origin,
+			storeId: $page?.data?.store?.id
+		})
+		products = resP?.hits
+	} catch (e) {
+	} finally {
+		loadingProducts = false
+	}
+}
+
+function moveAllUnavailableItemsToWishlist() {
+	data.cart?.unavailableItems.forEach(async function (item) {
+		if (!$page.data.me) {
+			goto(`${$page.data.loginUrl || '/auth/login'}`)
+			return
+		}
+
+		try {
+			const isWislisted = await WishlistService.toggleWishlistService({
+        product: item,
+				pid: item.pid,
+				vid: item.pid,
+				origin: $page?.data?.origin,
+				storeId: $page?.data?.store?.id
+			})
+		} catch (e) {
+			toast(e, 'error')
+		} finally {
+		}
+
+		try {
+			const res = await addToCart({
+				pid: item.pid,
+				qty: -9999999,
+				customizedImg: item.customizedImg
+			})
+		} catch (e) {
+			toast(e, 'error')
+		} finally {
+		}
+	})
+}
+</script>
+
+<section class="min-h-screen w-full px-3 py-5 sm:p-10">
+	<div class="container mx-auto max-w-6xl">
+		{#if data.loadingCart}
+			<div class="flex flex-col gap-5">
+				{#each { length: 5 } as _}
+					<Skeleton />
+				{/each}
+			</div>
+		{:else if data.cart?.qty > 0}
+			<div class="mb-14 lg:mb-0 flex flex-col gap-10 lg:flex-row lg:justify-center xl:gap-20">
+				<div class="w-full flex-1">
+					<div class="items-center justify-between h-10 sm:h-14 sm:flex">
+						<!-- Cart start  -->
+
+						<div class="mr-4 flex items-baseline">
+							<h1 class="font-serif text-2xl font-medium tracking-wider sm:text-3xl">Cart</h1>
+
+							<div class="mx-3 h-1 w-1 rounded-full bg-zinc-500"></div>
+
+							<h4 class="tracking-tighter text-zinc-500 sm:text-xl">
+								{data.cart?.qty || ''}
+
+								{#if data.cart?.qty > 1}
+									Items
+								{:else}
+									Item
+								{/if}
+							</h4>
+						</div>
+					</div>
+
+					<hr />
+
+					<div>
+						{#if data.cart?.items}
+							<div class="flex flex-col divide-y">
+								{#each data.cart?.items as item, ix (item.pid)}
+									<!-- Product detail start -->
+
+									<div
+										in:slide="{{ duration: 300 }}"
+										out:fly="{{ x: -800, duration: 300 }}"
+										class="flex w-full items-start gap-4 py-5">
+										<a
+											href="/product/{item?.slug}"
+											aria-label="Click to visit product details"
+											class="block shrink-0 overflow-hidden">
+											{#if item.customizedImg || item.img}
+												<LazyImg
+													src="{item.isCustomizeditem ? item.customizedImg : item.img}"
+													alt=" "
+													width="384"
+													height="512"
+													aspect_ratio="3:4"
+													class="object-contain object-top h-28 w-20 text-xs" />
+											{:else}
+												<div
+													class="h-32 sm:h-40 w-20 bg-zinc-100 flex flex-col items-center justify-center p-5 text-zinc-500 text-xs text-center">
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke-width="1.5"
+														stroke="currentColor"
+														class="w-6 h-6">
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+														></path>
+													</svg>
+
+													<span>No image available</span>
+												</div>
+											{/if}
+										</a>
+
+										<div class="w-full flex-1">
+											<div class="mb-2 flex justify-between">
+												<a
+													href="/product/{item?.slug}"
+													aria-label="Click to visit product details"
+													class="flex-1 cursor-pointer text-base font-medium text-zinc-500 hover:underline sm:text-lg">
+													{item?.name}
+												</a>
+
+												{#if $page?.data?.store?.isFnb && item.foodType}
+													<div>
+														{#if item.foodType === 'veg'}
+															<img src="{productVeg}" alt="veg" class="h-5 w-5" />
+														{:else if item.foodType === 'nonveg'}
+															<img src="{productNonVeg}" alt="non veg" class="h-5 w-5" />
+														{/if}
+													</div>
+												{/if}
+											</div>
+
+											<div class="mb-2 flex flex-wrap items-center gap-2 text-sm sm:text-base">
+												<span class="text-lg font-bold sm:text-xl">
+													{item?.formattedItemAmount?.price}
+												</span>
+
+												{#if item?.mrp > item?.price}
+													<span class="whitespace-nowrap text-zinc-500 line-through">
+														{item?.formattedItemAmount?.mrp}
+													</span>
+
+													{#if Math.floor(((item.mrp - item.price) / item.mrp) * 100) > 0}
+														<span class="text-green-600">
+															({Math.floor(((item.mrp - item.price) / item.mrp) * 100)}% off)
+														</span>
+													{/if}
+												{/if}
+											</div>
+
+											{#if item?.usedOptions?.length}
+												<div class="mb-2 flex flex-col gap-2 text-sm">
+													{#each item?.usedOptions as option}
+														{#if option?.val?.length && option?.val !== undefined && option?.val != ''}
+															<div class="flex flex-wrap gap-2">
+																<h6>{option.name}:</h6>
+																{#each option.val as v}
+																	{#if v}
+																		<div class="font-bold">
+																			{v}
+																		</div>
+																	{/if}
+																{/each}
+															</div>
+														{/if}
+													{/each}
+												</div>
+											{/if}
+
+											<div class="mt-4 flex items-center justify-between">
+												<div class="flex items-center justify-center">
+													<!-- Minus icon -->
+
+													<form
+														action="/cart?/add"
+														method="POST"
+														use:enhance="{() => {
+															loading[ix] = true
+															return async ({ result }) => {
+																invalidateAll()
+																await applyAction(result)
+																loading[ix] = false
+															}
+														}}">
+														<input type="hidden" name="pid" value="{item.pid}" />
+														<input type="hidden" name="qty" value="{-1}" />
+														<input
+															type="hidden"
+															name="customizedImg"
+															value="{item.customizedImg}" />
+
+														<button
+															type="submit"
+															disabled="{loading[ix]}"
+															class="flex h-6 w-6 transform items-center justify-center rounded-full bg-zinc-200 transition duration-300 focus:outline-none sm:h-8 sm:w-8
+															{loading[ix]
+																? 'cursor-not-allowed opacity-80'
+																: 'cursor-pointer hover:opacity-80 active:scale-95'}">
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 24 24"
+																stroke-width="1.5"
+																stroke="currentColor"
+																class="w-4 h-4 text-zinc-500">
+																<path
+																	stroke-linecap="round"
+																	stroke-linejoin="round"
+																	d="M19.5 12h-15"></path>
+															</svg>
+														</button>
+													</form>
+
+													<!-- Quantity indicator -->
+
+													<div
+														class="mx-2 flex h-6 w-6 items-center justify-center text-xs font-bold sm:h-8 sm:w-8">
+														{#if selectedLoadingType !== 'delete' && loading[ix]}
+															<img
+																src="{dotsLoading}"
+																alt="loading"
+																class="h-auto w-5 object-contain object-center" />
+														{:else}
+															<span>{item?.qty}</span>
+														{/if}
+													</div>
+
+													<!-- Puls icon -->
+
+													<form
+														action="/cart?/add"
+														method="POST"
+														use:enhance="{() => {
+															loading[ix] = true
+															return async ({ result }) => {
+																invalidateAll()
+																await applyAction(result)
+																loading[ix] = false
+															}
+														}}">
+														<input type="hidden" name="pid" value="{item.pid}" />
+														<input type="hidden" name="qty" value="{+1}" />
+														<input
+															type="hidden"
+															name="customizedImg"
+															value="{item.customizedImg}" />
+														<button
+															type="submit"
+															disabled="{loading[ix]}"
+															class="flex h-6 w-6 transform items-center justify-center rounded-full bg-zinc-200 transition duration-300 focus:outline-none sm:h-8 sm:w-8
+															{loading[ix]
+																? 'cursor-not-allowed opacity-80'
+																: 'cursor-pointer hover:opacity-80 active:scale-95'}">
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 24 24"
+																stroke-width="1.5"
+																stroke="currentColor"
+																class="w-4 h-4 text-zinc-500">
+																<path
+																	stroke-linecap="round"
+																	stroke-linejoin="round"
+																	d="M12 4.5v15m7.5-7.5h-15"></path>
+															</svg>
+														</button>
+													</form>
+												</div>
+
+												<!-- Delete icon -->
+
+												<form
+													action="/cart?/add"
+													method="POST"
+													use:enhance="{() => {
+														selectedLoadingType = 'delete'
+														loading[ix] = true
+														return async ({ result }) => {
+															invalidateAll()
+															await applyAction(result)
+															selectedLoadingType = null
+															loading[ix] = false
+														}
+													}}">
+													<input type="hidden" name="pid" value="{item.pid}" />
+													<input type="hidden" name="qty" value="{-9999999}" />
+													<input type="hidden" name="customizedImg" value="{item.customizedImg}" />
+
+													<button
+														type="submit"
+														disabled="{loading[ix]}"
+														class="flex h-6 w-6 transform items-center justify-center rounded-full bg-zinc-200 transition duration-300 focus:outline-none sm:h-8 sm:w-8
+														{loading[ix]
+															? 'cursor-not-allowed opacity-80'
+															: 'cursor-pointer hover:opacity-80 active:scale-95'}">
+														{#if selectedLoadingType === 'delete' && loading[ix]}
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																class="h-4 w-4 animate-spin"
+																viewBox="0 0 24 24"
+																stroke-width="1.5"
+																stroke="currentColor"
+																fill="none"
+																stroke-linecap="round"
+																stroke-linejoin="round">
+																<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+																<path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95"></path>
+																<path d="M3.69 8.56a9 9 0 0 0 -.69 3.44"></path>
+																<path d="M3.69 15.44a9 9 0 0 0 1.95 2.92"></path>
+																<path d="M8.56 20.31a9 9 0 0 0 3.44 .69"></path>
+																<path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95"></path>
+																<path d="M20.31 15.44a9 9 0 0 0 .69 -3.44"></path>
+																<path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92"></path>
+																<path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69"></path>
+															</svg>
+														{:else}
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 24 24"
+																stroke-width="1.5"
+																stroke="currentColor"
+																class="w-4 h-4 text-zinc-500">
+																<path
+																	stroke-linecap="round"
+																	stroke-linejoin="round"
+																	d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+																></path>
+															</svg>
+														{/if}
+													</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								{/each}
+							</div>
+						{/if}
+					</div>
+
+					<div>
+						<!-- <Weprovides /> -->
+					</div>
+				</div>
+
+				<div class="w-full lg:w-80 lg:shrink-0 lg:grow-0">
+					<Pricesummary
+						cart="{data.cart}"
+						nextpage="/checkout/address"
+						text="Select Address"
+						showNextIcon />
+				</div>
+			</div>
+
+			{#if products?.length > 0}
+				<div class="w-full">
+					<h2
+						class="my-5 font-serif text-xl font-medium tracking-wider sm:my-10 sm:text-2xl md:text-3xl xl:text-4xl">
+						You May Like
+					</h2>
+
+					<div
+						class="grid w-full grid-cols-2 items-end sm:flex sm:flex-wrap sm:justify-between sm:gap-10">
+						{#each products as p, px (p.id)}
+							{#if p && px < 10}
+								<ProductCard product="{p}" />
+							{/if}
+						{/each}
+					</div>
+				</div>
+			{/if}
+		{:else}
+			<div class="flex h-[70vh] flex-col items-center justify-center text-center">
+				<div>
+					<img src="{noAddToCartAnimate}" alt="empty listing" class="mb-5 h-60 object-contain" />
+				</div>
+
+				<span class="mb-3 text-xl font-medium md:text-3xl">Empty Cart!!</span>
+
+				<span class="mb-5 text-xs">
+					We didn't find any item inside cart, Go ahead, order some essentials from the menu
+				</span>
+
+				<PrimaryButton class="w-40 py-2 text-sm" on:click="{() => goto(`/`)}">
+					BROWSE ITEMS
+				</PrimaryButton>
+			</div>
+		{/if}
+	</div>
+</section>

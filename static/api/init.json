@@ -1,0 +1,445 @@
+{
+  "storeOne": {
+    "_id": "6356502aca4ff28ed596cb1b",
+    "address": "#317, Sector 56, Gurgaon",
+    "otpLogin": false,
+    "pageSize": 40,
+    "phone": "+91-9910990882",
+    "searchbarText": "Search for categories, brands and more...",
+    "websiteLegalName": "Misiki Technologies LLP",
+    "websiteName": "yCommerce",
+    "weightUnit": "kg",
+    "domain": "http://localhost:3000",
+    "description": "Litekart is a Multi Vendor and Multi Store Ecommerce Software. Fully White Labeled, External License Free. Option to host in your own server.",
+    "websiteEmail": "sakshi02@nagarro.com",
+    "keywords": "online shopping, online shopping sites, online shopping india, india shopping, Online shopping site",
+    "title": "Online Shopping for Women, Men, Kids Fashion & Lifestyle",
+    "storeCurrency": {
+      "_id": "648d663d494a73e8e9eff705",
+      "isoCode": "INR",
+      "symbol": "₹",
+      "decimalDigits": 2
+    },
+    "logo": "http://localhost:3000/y-commerce-logo.png",
+    "adminUrl": "",
+    "IMAGE_CDN_URL": "https://ik.imagekit.io/3wzatecz51w3i",
+    "isCors": true,
+    "dimensionUnit": "km",
+    "product_image_dimension": "3x4",
+    "isAbandonnedCart": true,
+    "isCustomized": false,
+    "isFnb": false,
+    "isJewellary": false,
+    "isProductFeeds": true,
+    "isProductReviewsAndRatings": true,
+    "isSecureCatalogue": false,
+    "isShortCode": false,
+    "isWishlist": true,
+    "isGDPR": false,
+    "isImportExport": true,
+    "isDeals": true,
+    "isDigitalProducts": false,
+    "isShortCodes": false,
+    "googleAnalytics": {
+      "active": {
+        "type": "boolean",
+        "val": true
+      },
+      "id": {
+        "type": "text",
+        "val": "G-BG3JKWLYPF"
+      }
+    },
+    "googleTagManager": {
+      "active": {
+        "type": "boolean",
+        "val": false
+      },
+      "id": {
+        "type": "text",
+        "val": "GTM-MS8GK29"
+      }
+    },
+    "facebookPixel": {
+      "active": {
+        "type": "boolean",
+        "val": true
+      },
+      "id": {
+        "type": "text",
+        "val": "931636488112724"
+      }
+    },
+    "close": {
+      "active": {
+        "type": "boolean",
+        "val": false
+      },
+      "message": {
+        "type": "text",
+        "val": "Temporarily closed, opening soon..."
+      }
+    },
+    "isBulkOrder": false,
+    "isIndianPincodes": false,
+    "isNilStockListing": false,
+    "isTags": true,
+    "storePromoVideo": {
+      "active": {
+        "type": "boolean",
+        "val": false
+      },
+      "url": {
+        "type": "string",
+        "val": "wmSZS3NcSus"
+      }
+    },
+    "liveStreaming": false,
+    "orderProcessing": false,
+    "currencyCode": "INR",
+    "currencySymbol": "₹",
+    "id": "6356502aca4ff28ed596cb1b"
+  },
+  "settings": {
+    "_id": "setting-1",
+    "IMAGE_CDN_URL": "https://ik.imagekit.io/3wzatecz51w3i",
+    "id": "setting-1"
+  },
+  "megamenu": [
+    {
+      "_id": "0",
+      "new": false,
+      "children": [],
+      "name": "Men",
+      "link": "fashion-men",
+      "slug": "fashion-men"
+    },
+    {
+      "_id": "1",
+      "new": false,
+      "children": [
+        {
+          "_id": "1_1",
+          "new": false,
+          "children": [
+            {
+              "_id": "1_1_1",
+              "new": false,
+              "children": [],
+              "name": "Fashion Jewellery",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "1_1_2",
+              "new": false,
+              "children": [],
+              "name": "Fine Jewellery",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "1_1_3",
+              "new": false,
+              "children": [],
+              "name": "Earings",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Jewellery",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "1_2",
+          "new": false,
+          "children": [],
+          "name": "Watches & wearables",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "1_3",
+          "new": false,
+          "children": [],
+          "name": "Beauty & Personal Care",
+          "link": "women-cosmetic",
+          "slug": "women-cosmetic"
+        }
+      ],
+      "name": "Women",
+      "link": "fashion-women",
+      "slug": "fashion-women"
+    },
+    {
+      "_id": "2",
+      "new": false,
+      "children": [
+        {
+          "_id": "2_1",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Boys Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_2",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Girls Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_3",
+          "new": false,
+          "children": [],
+          "name": "Footwear",
+          "link": "women-cosmetic",
+          "slug": "women-cosmetic"
+        }
+      ],
+      "name": "Kids",
+      "link": "fashion-women",
+      "slug": "fashion-women"
+    },
+    {
+      "_id": "3",
+      "new": false,
+      "children": [
+        {
+          "_id": "2_1",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Boys Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_2",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Girls Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_3",
+          "new": false,
+          "children": [],
+          "name": "Footwear",
+          "link": "women-cosmetic",
+          "slug": "women-cosmetic"
+        }
+      ],
+      "name": "Home & Living",
+      "link": "fashion-women",
+      "slug": "fashion-women"
+    },
+    {
+      "_id": "4",
+      "new": false,
+      "children": [
+        {
+          "_id": "2_1",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Boys Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_2",
+          "new": false,
+          "children": [
+            {
+              "_id": "2_1_1",
+              "new": false,
+              "children": [],
+              "name": "T-Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_2",
+              "new": false,
+              "children": [],
+              "name": "Shirts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            },
+            {
+              "_id": "2_1_3",
+              "new": false,
+              "children": [],
+              "name": "Shorts",
+              "link": "women-jewellery",
+              "slug": "women-jewellery"
+            }
+          ],
+          "name": "Girls Clothing",
+          "link": "women-jewellery",
+          "slug": "women-jewellery"
+        },
+        {
+          "_id": "2_3",
+          "new": false,
+          "children": [],
+          "name": "Footwear",
+          "link": "women-cosmetic",
+          "slug": "women-cosmetic"
+        }
+      ],
+      "name": "Beauty",
+      "link": "fashion-women",
+      "slug": "fashion-women"
+    }
+  ],
+  "popularSearches": {
+    "data": [
+      {
+        "_id": "644d066f2bb7afe6ba36d337",
+        "text": "t shirts",
+        "popularity": 2
+      },
+      {
+        "_id": "644d06402bb7afe6ba369f9c",
+        "text": "earings",
+        "popularity": 1
+      }
+    ],
+    "count": 2,
+    "pageSize": 40,
+    "noOfPage": 1,
+    "page": 1,
+    "active": 0,
+    "inactive": 0
+  }
+}

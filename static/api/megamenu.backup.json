@@ -1,0 +1,76 @@
+[
+  {
+    "_id": "63b8f1fee497e2c0976880f5",
+    "new": false,
+    "children": [],
+    "name": "Books",
+    "link": "books-en-en",
+    "slug": "books-en-en"
+  },
+  {
+    "_id": "6405e8a9d1e27517b1966598",
+    "new": false,
+    "children": [],
+    "name": "Electronics",
+    "link": "electronics",
+    "slug": "electronics"
+  },
+  {
+    "_id": "6405e37ad1e27517b19662da",
+    "new": false,
+    "children": [
+      {
+        "_id": "63b7ecb1975b3e01c25cb591",
+        "new": false,
+        "children": [],
+        "name": "Men",
+        "link": "fashion-men",
+        "slug": "fashion-men"
+      },
+      {
+        "_id": "63b7ecc6975b3e01c25cb5ce",
+        "new": false,
+        "children": [
+          {
+            "_id": "63b7ecf3975b3e01c25cb626",
+            "new": false,
+            "children": [],
+            "name": "Jewellery",
+            "link": "women-jewellery",
+            "slug": "women-jewellery"
+          },
+          {
+            "_id": "63b8f1b0e497e2c09768808a",
+            "new": false,
+            "children": [],
+            "name": "Cosmetic",
+            "link": "women-cosmetic",
+            "slug": "women-cosmetic"
+          }
+        ],
+        "name": "Women",
+        "link": "fashion-women",
+        "slug": "fashion-women"
+      },
+      {
+        "_id": "649d91a8b0581b345dd00a60",
+        "new": false,
+        "children": [],
+        "name": "Kids",
+        "slug": "kids",
+        "link": ""
+      }
+    ],
+    "name": "Fashion",
+    "link": "fashion",
+    "slug": "fashion"
+  },
+  {
+    "_id": "6405e914d1e27517b19665eb",
+    "new": false,
+    "children": [],
+    "name": "Grocery",
+    "link": "grocery",
+    "slug": "grocery"
+  }
+]

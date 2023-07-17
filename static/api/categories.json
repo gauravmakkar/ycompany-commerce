@@ -1,0 +1,29 @@
+{
+  "took": 1,
+  "data": [
+    {
+      "count": 1,
+      "type": "categories",
+      "slug": "fashion-women",
+      "key": "Women Clothing"
+    },
+    {
+      "count": 1,
+      "type": "categories",
+      "slug": "washing-machine-fully-automatic-front-load",
+      "key": "Men Clothing"
+    },
+    {
+      "count": 1,
+      "type": "categories",
+      "slug": "women-jewellery",
+      "key": "Women Earings"
+    },
+    {
+      "count": 1,
+      "type": "categories",
+      "slug": "kids-boy-party-wear",
+      "key": "Boy Party Wear"
+    }
+  ]
+}

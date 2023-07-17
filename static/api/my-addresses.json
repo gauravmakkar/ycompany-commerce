@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "64a9369cc9012bd35c0b73ab",
+    "address": "House no. 317, Sector 56, Gurgaon",
+    "locality": "",
+    "city": "Gurgaon",
+    "country": "IN",
+    "email": "sakshi02@nagarro.co",
+    "firstName": "Sakshi",
+    "isResidential": true,
+    "lastName": "Puri",
+    "phone": "99910990882",
+    "state": "HR",
+    "verified": false,
+    "zip": "122011",
+    "fullName": "Sakshi Puri"
+  }
+]
