@@ -1127,20 +1127,29 @@
 
       {
         "_id": "slider_mobile_1",
-        "img": "https://s3.ap-south-1.amazonaws.com/litekart.in/img/2-3-oBtIyFba8txz.png",
+        "img": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/28/84b6a214-9eb3-49eb-9f9d-72cec56ec5d71659019908592-Indian-Wear_DK--1-.jpg",
         "sort": 3,
         "type": "slider",
         "isMobile": true,
-        "imgCdn": "https://litekart.in.s3.ap-south-1.amazonaws.com/litekart.in/img/2-3-oBtIyFba8txz.png",
+        "imgCdn": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/28/84b6a214-9eb3-49eb-9f9d-72cec56ec5d71659019908592-Indian-Wear_DK--1-.jpg",
         "link": "/search"
       },
       {
         "_id": "slider_mobile_2",
-        "img": "https://s3.ap-south-1.amazonaws.com/litekart.in/img/5-3-Wv0JehGIbVCS.png",
+        "img": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/179e278f-77ee-44c2-bf39-9f00b0cd08e01658752429301-Handbags_Desk.jpg",
         "sort": 4,
         "type": "slider",
         "isMobile": true,
-        "imgCdn": "https://litekart.in.s3.ap-south-1.amazonaws.com/litekart.in/img/5-3-Wv0JehGIbVCS.png",
+        "imgCdn": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/179e278f-77ee-44c2-bf39-9f00b0cd08e01658752429301-Handbags_Desk.jpg",
+        "link": "/search"
+      },
+      {
+        "_id": "slider_mobile_3",
+        "img": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/5/31/4031994d-9092-4aa7-aea1-f52f2ae5194f1654006594976-Activewear_DK.jpg",
+        "sort": 4,
+        "type": "slider",
+        "isMobile": true,
+        "imgCdn": "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/5/31/4031994d-9092-4aa7-aea1-f52f2ae5194f1654006594976-Activewear_DK.jpg",
         "link": "/search"
       },
       {
